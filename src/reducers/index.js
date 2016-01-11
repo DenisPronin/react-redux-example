@@ -1,8 +1,5 @@
-import { combineReducers } from 'redux';
-import appState from './state';
+import counter from './cousenter';
 
-const rootReducer = combineReducers({
-    appState
-});
-
-export default rootReducer;
+export default {
+    counter
+};

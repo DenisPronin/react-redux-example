@@ -1,3 +1,4 @@
+/*
 // This file configures the development web server
 // which supports hot reloading and synchronized testing.
 
@@ -39,6 +40,41 @@ browserSync({
   // no need to watch '*.js' here, webpack will take care of it for us,
   // including full page reloads if HMR won't work
   files: [
-    'src/*.html'
+    'src*/
+/*.html'
   ]
+});
+
+*/
+
+var path = require('path');
+var express = require('express');
+
+var webpack = require('webpack');
+var webpackDevMiddleware = require('webpack-dev-middleware');
+var webpackHotMiddleware = require('webpack-hot-middleware');
+var webpackConfigBuilder = require('./webpack.config.js');
+var webpackConfig = webpackConfigBuilder('development');
+
+var app = express();
+var compiler = webpack(webpackConfig);
+
+app.use(webpackDevMiddleware(compiler, {
+    noInfo: true,
+    publicPath: webpackConfig.output.publicPath
+}));
+
+app.use(webpackHotMiddleware(compiler));
+
+app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'src', 'index.html'));
+});
+
+app.listen(3000, 'localhost', function (err) {
+    if (err) {
+        console.log(err);
+        return;
+    }
+
+    console.log('Listening at http://localhost:3000');
 });

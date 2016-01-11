@@ -16,6 +16,7 @@
         "modules": true
     },
     "rules": {
+        "no-console": 0,
         "quotes": 0,
         "no-debugger": 1,
         "semi": [1, "always"],
