@@ -4,7 +4,7 @@ import React, {PropTypes} from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Counter from '../components/Counter';
-import * as counterActions from '../actions/counterActions';
+import * as actions from '../actions/actions';
 
 class App extends React.Component {
     render() {
@@ -29,7 +29,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(counterActions, dispatch)
+        actions: bindActionCreators(actions, dispatch)
     };
 }
 
