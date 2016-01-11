@@ -1,4 +1,4 @@
-import {INCREMENT_COUNTER} from '../constants/ActionTypes';
+import {INCREMENT_COUNTER, DECREMENT_COUNTER} from '../constants/ActionTypes';
 
 const initialState = {
     counter: 1
@@ -9,6 +9,11 @@ export default function appState(state = initialState, action) {
         case INCREMENT_COUNTER:
             return Object.assign({}, state, {
                 counter: state.counter + 1
+            });
+
+        case DECREMENT_COUNTER:
+            return Object.assign({}, state, {
+                counter: state.counter - 1
             });
 
 		default:

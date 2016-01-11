@@ -4,8 +4,12 @@ class Counter extends React.Component {
     constructor(props) {
         super(props);
 
-        //why all the binds below? See here: https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md
         this.increment = this.increment.bind(this);
+        this.decrement = this.decrement.bind(this);
+    }
+
+    decrement() {
+        this.props.actions.decrementCounter(this.props.appState);
     }
 
     increment() {
@@ -20,6 +24,7 @@ class Counter extends React.Component {
                 <h2>Counter</h2>
                 <div>{settings.counter}</div>
                 <input type="button" value="+" onClick={this.increment}/>
+                <input type="button" value="-" onClick={this.decrement}/>
             </div>
         );
     }
