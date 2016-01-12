@@ -33,5 +33,7 @@ export const actions = {
 // Reducer
 // ------------------------------------
 export default handleActions({
-  [COUNTER_INCREMENT]: (state, { payload }) => state + payload
+  [COUNTER_INCREMENT]: (state, { payload }) => {
+    return state + payload
+  }
 }, 1)
