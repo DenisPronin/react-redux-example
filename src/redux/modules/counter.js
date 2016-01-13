@@ -33,6 +33,11 @@ export const actions = {
 }
 
 // ------------------------------------
+// State
+// ------------------------------------
+const initialState = 1;
+
+// ------------------------------------
 // Reducer
 // ------------------------------------
 export default handleActions({
@@ -43,4 +48,4 @@ export default handleActions({
   [COUNTER_DECREMENT]: (state, {payload}) => {
     return state - payload
   }
-}, 1)
+}, initialState)

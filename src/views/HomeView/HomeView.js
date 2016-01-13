@@ -1,9 +1,10 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
-import { Link } from 'react-router'
 import { actions as counterActions } from '../../redux/modules/counter'
 import Counter from '../../components/Counter'
+
+import { Link } from 'react-router'
 
 export class HomeView extends React.Component {
   static propTypes = {
@@ -19,7 +20,8 @@ export class HomeView extends React.Component {
         <h1>Welcome to the React Redux Starter Kit</h1>
         <Counter value={settings.counter} actions={this.props.actions} />
         <hr />
-        <Link to='/404'>Go to 404 Page</Link>
+        <div><Link to='/friends'>Go to Friends List Page</Link></div>
+        <div><Link to='/404'>Go to 404 Page</Link></div>
       </div>
     )
   }
