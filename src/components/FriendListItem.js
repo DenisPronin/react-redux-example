@@ -9,16 +9,25 @@ class FriendsListItem extends React.Component {
     this.props.actions.starFriend(id);
   }
 
+  remove(id) {
+    this.props.actions.removeFriend(id);
+  }
+
   render () {
+    let friend = this.props.friend;
     return (
-      <li key={ this.props.friend.id }>
+      <li key={ friend.id }>
         <div>
-          { this.props.friend.name }
+          { friend.name }
         </div>
         <div className='friend-action'>
-          <button type='button' onClick={this.star.bind(this, this.props.friend.id)}>
-            *
-          </button>
+          <a href='#' onClick={this.star.bind(this, friend.id)}>
+            { friend.starred ? 'has star' : 'no star' }
+          </a>
+
+          <a href='#' onClick={this.remove.bind(this, friend.id)}>
+            remove
+          </a>
         </div>
       </li>
     )

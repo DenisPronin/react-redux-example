@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 
 import FriendListItem from './FriendListItem'
+import AddFriendInput from './FriendsAddInput'
 
 class FriendsList extends React.Component {
   constructor (props) {
@@ -10,14 +11,17 @@ class FriendsList extends React.Component {
   render () {
     let friends = this.props.friends;
     return (
-      <ul className='friend-list'>
-        {
-          Object.keys(friends).map(friendKey => {
-            let friend = friends[friendKey];
-            return <FriendListItem key={friend.id} friend={friend} actions={this.props.actions} />
-          })
-        }
-      </ul>
+      <div>
+        <AddFriendInput actions={this.props.actions} />
+        <ul className='friend-list'>
+          {
+            Object.keys(friends).map(friendKey => {
+              let friend = friends[friendKey];
+              return <FriendListItem key={friend.id} friend={friend} actions={this.props.actions} />
+            })
+          }
+        </ul>
+      </div>
     )
   }
 }
