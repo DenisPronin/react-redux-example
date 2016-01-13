@@ -20,7 +20,6 @@ class addFriendInput extends React.Component {
   }
 
   render() {
-    let friend = this.props.friend;
     return (
       <div>
         <input type="text" className="add-friend-input"
