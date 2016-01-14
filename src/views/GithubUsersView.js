@@ -1,12 +1,17 @@
 import React, {PropTypes} from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
-import { actions as friendListActions } from '../../redux/modules/friendsList'
-import FriendList from '../../components/friends/FriendsList'
+import { actions as githubUsersActions } from '../redux/modules/githubUsers'
 
 import { Link } from 'react-router'
 
-export class FriendsListView extends React.Component {
+export class GithubUsersView extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.props.actions.fetchUsers();
+  }
 
   static propTypes = {
     state: PropTypes.object.isRequired,
@@ -16,11 +21,7 @@ export class FriendsListView extends React.Component {
   render () {
     return (
       <div className='container text-center'>
-        <h1>Friends List</h1>
-
-        <FriendList
-          friends={this.props.state.friendsList.friendsById}
-          actions={this.props.actions} />
+        <h1>Github Users</h1>
 
         <hr />
         <Link to='/'>Back To Home View</Link>
@@ -35,8 +36,8 @@ const mapStateToProps = (state) => ({
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(friendListActions, dispatch)
+    actions: bindActionCreators(githubUsersActions, dispatch)
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(FriendsListView)
+export default connect(mapStateToProps, mapDispatchToProps)(GithubUsersView)
