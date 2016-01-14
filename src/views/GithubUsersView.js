@@ -2,6 +2,7 @@ import React, {PropTypes} from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
 import { actions as githubUsersActions } from '../redux/modules/githubUsers'
+import GithubUsersList from '../components/githubUsers/githubUsersList'
 
 import { Link } from 'react-router'
 
@@ -9,8 +10,6 @@ export class GithubUsersView extends React.Component {
 
   constructor(props) {
     super(props);
-
-    this.props.actions.fetchUsers();
   }
 
   static propTypes = {
@@ -18,10 +17,17 @@ export class GithubUsersView extends React.Component {
     actions: PropTypes.object.isRequired
   };
 
+  componentWillMount() {
+    this.props.actions.fetchUsers();
+  }
+
   render () {
     return (
       <div className='container text-center'>
-        <h1>Github Users</h1>
+
+        <GithubUsersList
+          users={this.props.state.githubUsers}
+          actions={this.props.actions} />
 
         <hr />
         <Link to='/'>Back To Home View</Link>

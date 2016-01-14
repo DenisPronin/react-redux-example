@@ -11,7 +11,11 @@ export const FETCH_USERS = 'FETCH_USERS';
 /*
  * Actions
  * */
-export const fetchUsers = createAction(FETCH_USERS, Api.fetchUsers);
+export const fetchUsers = createAction(FETCH_USERS, () => {
+  return {
+    promise: Api.fetchUsers()
+  }
+});
 
 export const actions = {
   fetchUsers
@@ -21,6 +25,8 @@ export const actions = {
 * State
 * */
 const initialState = {
+  pending: true,
+  errorMessage: '',
   users: [], // ids
   userById: {}
 };
@@ -29,17 +35,32 @@ const initialState = {
  * Reducers
  * */
 export default handleActions({
-  [FETCH_USERS]: {
-    next: (state, action) => {
-      console.log(state);
-      console.log(action);
-
-      return state;
-    },
-    // handle reject
-    throw: (state, action) => ({
+  FETCH_USERS_PENDING: (state, { payload }) => {
+    return {
       ...state,
-      error: action.payload // error in payload
-    })
+      pending: true
+    };
+  },
+  FETCH_USERS_REJECTED: (state, { payload }) => {
+    return {
+      ...state,
+      pending: false,
+      errorMessage: payload.error
+    };
+  },
+  FETCH_USERS_FULFILLED: (state, { payload: users }) => {
+    let usersIds = [];
+    let userById = {};
+    users.forEach(user => {
+      userById[user.id] = user;
+      usersIds = _.concat(usersIds, user.id);
+    });
+    return {
+      ...state,
+      pending: false,
+      errorMessage: '',
+      users: usersIds,
+      userById: userById
+    };
   }
 }, initialState);
