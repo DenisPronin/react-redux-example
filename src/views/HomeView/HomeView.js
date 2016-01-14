@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
 import { actions as counterActions } from '../../redux/modules/counter'
-import Counter from '../../components/Counter'
+import Counter from '../../components/counter/Counter'
 
 import { Link } from 'react-router'
 

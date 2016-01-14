@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
 import { actions as friendListActions } from '../../redux/modules/friendsList'
-import FriendList from '../../components/FriendsList'
+import FriendList from '../../components/friends/FriendsList'
 
 import { Link } from 'react-router'
 

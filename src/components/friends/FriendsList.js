@@ -3,6 +3,8 @@ import React, { PropTypes } from 'react'
 import FriendListItem from './FriendListItem'
 import AddFriendInput from './FriendsAddInput'
 
+import styles from 'styles/components/friends-list.scss';
+
 class FriendsList extends React.Component {
   constructor (props) {
     super(props);
@@ -13,7 +15,7 @@ class FriendsList extends React.Component {
     return (
       <div>
         <AddFriendInput actions={this.props.actions} />
-        <ul className='friend-list'>
+        <ul className={styles['friend-list']}>
           {
             Object.keys(friends).map(friendKey => {
               let friend = friends[friendKey];

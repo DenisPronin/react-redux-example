@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react'
 
+import styles from 'styles/components/friends-list.scss';
+
 class addFriendInput extends React.Component {
   constructor(props) {
     super(props);
@@ -22,7 +24,7 @@ class addFriendInput extends React.Component {
   render() {
     return (
       <div>
-        <input type="text" className="add-friend-input"
+        <input type="text" className={styles['add-friend-input']}
                value={this.state.name}
                onChange={this.handleChange.bind(this)}
         />
