@@ -24,10 +24,11 @@ export class GithubUsersView extends React.Component {
   render () {
     return (
       <div className='container text-center'>
-
-        <GithubUsersList
-          users={this.props.state.githubUsers}
-          actions={this.props.actions} />
+        <div className="container">
+          <GithubUsersList
+            users={this.props.state.githubUsers}
+            actions={this.props.actions} />
+        </div>
 
         <hr />
         <Link to='/'>Back To Home View</Link>
